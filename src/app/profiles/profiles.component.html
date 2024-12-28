@@ -1,0 +1,140 @@
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-12">
+      <div class="card " >
+        <div class="card-header p-3">
+          <h5 class="mb-2">
+            List of Accounts</h5>
+          <p class="mb-0">⬆️ Upload the list of user logins and profiles 🧑‍💻 to send DMs 💌</p>
+        </div>
+        <div class="card-body " style="height:70vh!important; " >
+          <div class="row">
+            <div class="col-6">
+              <div  class="border-dashed border-1 border-secondary border-radius-md p-3  mb-4">
+                <div class=" pb-0 row text-center">
+                  <h6 class="pt-4 col-5">🔑 The user login list</h6>
+                  <div class="col-1"></div>
+                  <div class="col-6 d-flex px-0 justify-content-end">
+                    <div class=" mx-3 cursor-pointer">
+                      <a class="btn bg-gradient-primary mt-3 " *ngIf="this.store.login&& this.store.login.length>0" (click)="cleanLogin()">Clean</a>
+                    </div>
+                    <div class=" mx-3 cursor-pointer">
+                      <label  for="importLogin" class="btn bg-gradient-primary mt-3" >Import</label>
+
+                      <input id="importLogin" type="file" style="display: none" accept=".csv" (change)="onLoginFileSelected($event)" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class=" px-0 pt-0 pb-2 " >
+                  <div class="table-responsive p-0 scroll-container" >
+                    <div *ngIf="store&& store?.login&&store?.login?.length === 0" class=" text-secondary text-xs font-weight-bolder opacity-7 mx-2 px-2">⚠️ The user login list is empty. Please add logins</div>
+
+                    <table class="table align-items-center justify-content-center mb-0" *ngIf="this.store.login.length>0">
+                                  <thead>
+                                  <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">userName</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">password</th>
+                                  </tr>
+                                  </thead>
+                      <tbody>
+                      <tr *ngFor="let item of this.store.login">
+                        <td>
+                          <div class="d-flex px-2">
+                            <h6 class="avatar avatar-sm rounded-circle border border-action text-center text-primary" style="  color: #344767!important;">
+                              {{this.store.getFirstTwoCharacters(item.userName)}}
+                            </h6>
+                            <div class="my-auto p-2">
+                              <h6 class="text-sm">{{item.userName}}</h6>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="my-auto p-2">
+                            <h6 class="text-sm">{{item.password}}</h6>
+                          </div>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+                <div  class="border-dashed border-1 border-secondary border-radius-md p-3  mb-4">
+                  <div class=" pb-0 row text-center">
+                    <h6 class="pt-4 col-6">👤 The list of profiles to DM</h6>
+                    <div class="col-6 d-flex px-0 justify-content-end">
+                      <div class=" mx-3 cursor-pointer">
+                        <a class="btn bg-gradient-primary mt-3 " *ngIf="this.store.profilesToDM&& this.store.profilesToDM.length>0" (click)="cleanProfileToDm()">Clean</a>
+                      </div>
+                      <div class=" mx-3 cursor-pointer">
+                        <label  for="importLoginprofilesToDM" class="btn bg-gradient-primary mt-3" >Import</label>
+
+                        <input id="importLoginprofilesToDM" type="file" style="display: none" accept=".csv" (change)="onProfileToDmFileSelected($event)" />
+                      </div>
+                    </div>
+                  </div>
+
+<!--                  <div class="card-header pb-0 row text-center">-->
+<!--                  <h6 class="pt-4 col-4">Profiles to DM</h6>-->
+<!--                  <div class="col-2"></div>-->
+<!--                  <div class="col-5 d-flex px-0 justify-content-end">-->
+<!--                    <div class=" mx-3 cursor-pointer">-->
+<!--                      <a class="btn bg-gradient-primary mt-3 "*ngIf="this.store&&this.store.profilesToDM&& this.store.profilesToDM.length>0" (click)="cleanProfileToDm()">Clean</a>-->
+<!--                    </div>-->
+<!--                    <div class=" mx-3 cursor-pointer">-->
+<!--                      &lt;!&ndash;            <input type="file"  class="btn bg-gradient-primary mt-3 " (change)="onFileSelected($event)" accept=".csv" >Import</input>&ndash;&gt;-->
+
+<!--                      &lt;!&ndash;            <a class="btn bg-gradient-primary mt-3 ">Import</a>&ndash;&gt;-->
+<!--                      &lt;!&ndash; Champ de sélection du fichier &ndash;&gt;-->
+<!--                      <label  for="importProfilesToDM" class="btn bg-gradient-primary mt-3" >Import</label>-->
+
+<!--                      <input id="importProfilesToDM" style="display: none" type="file"  accept=".csv" (change)="onProfileToDmFileSelected($event)" />-->
+
+<!--                      &lt;!&ndash; Bouton d'importation, qui déclenche la sélection du fichier &ndash;&gt;-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+                <div class="card-body px-0 pt-0 pb-2 scroll-container">
+                  <div class="table-responsive p-0">
+                    <div *ngIf="store&& store?.profilesToDM&&store?.profilesToDM?.length === 0" class=" text-secondary text-xs font-weight-bolder opacity-7 mx-2 px-2">⚠️ The list of profiles to DM is empty. Please add profiles.</div>
+
+                    <table class="table align-items-center justify-content-center mb-0" *ngIf="store?.profilesToDM?.length > 0">
+                      <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">userName</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let item of this.store?.profilesToDM">
+                        <td>
+                          <div class="d-flex px-2">
+                            <h6 class="avatar avatar-sm rounded-circle border border-action text-center text-primary" style="  color: #344767!important;">
+                              {{store?.getFirstTwoCharacters(item.userName)}}
+                            </h6>
+                            <div class="my-auto p-2">
+                              <h6 class="text-sm">{{item?.userName}}</h6>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

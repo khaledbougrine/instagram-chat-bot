@@ -1,0 +1,30 @@
+:host {
+
+}
+.border-nav-active {
+  font-size: 1.6rem;
+  border-left: 4px solid;
+  border-image: linear-gradient(to bottom, #7928CA 0%, #FF0080 100%) 0 1;
+}
+.border-nav {
+  font-size: 1.6rem;
+  border-left: 4px solid #cecfd2;
+  transition: 0.3s ease;
+  opacity: 1;
+}
+
+
+.navVisible {
+  display: none;
+}
+
+.iconx {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(310deg, #7928CA, #FF0080);
+  -webkit-mask: url('https://cdn-icons-png.flaticon.com/512/847/847969.png') no-repeat center;
+  mask: url('https://cdn-icons-png.flaticon.com/512/847/847969.png') no-repeat center;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}

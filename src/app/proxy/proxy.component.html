@@ -1,0 +1,145 @@
+<div class="container-fluid h-100" style="">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header pb-3  row">
+
+          <div class="col-8">      <h5 class="mb-2">
+            ✨ List of proxies</h5>
+            <p class="mb-0">📂 Upload your list of proxies 🌐 (in CSV format) to optimize your message sending 💬 !</p></div>
+
+          <div class="col-2"></div>
+          <div class="col-2 d-flex  justify-content-end">
+            <div class=" mx-3 cursor-pointer">
+              <a class="btn bg-gradient-primary mt-3 " *ngIf="store&& store?.proxys&&store?.proxys?.length>0" (click)="cleanProx()">Clean</a>
+            </div>
+            <div class=" mx-3 cursor-pointer">
+              <label  for="importLogin" class="btn bg-gradient-primary mt-3" >Import</label>
+
+              <input id="importLogin" type="file" style="display: none" accept=".csv" (change)="onProxyFileSelected($event)" />
+            </div>
+          </div>
+        </div>
+          <div class="card-body px-0 pt-0 pb-2" style="height: 65vh!important;">
+            <div class="table-responsive p-0 scroll-container" >
+              <div *ngIf="store&& store?.proxys&&store?.proxys?.length === 0" class=" text-secondary text-xs font-weight-bolder opacity-7 mx-4">⚠️ The proxy list is empty. Please add proxies to continue.</div>
+
+              <table *ngIf="store&& store?.proxys&&store?.proxys?.length>0" class="table align-items-center justify-content-center mb-0">
+                <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Adresses </th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ports </th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">userName </th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">password </th>
+
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of this.store?.proxys">
+                  <td>
+                    <div class="d-flex px-2">
+                      <div class="my-auto p-2">
+                        <h6 class="text-sm">{{item.address}}</h6>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex px-2">
+                      <div class="my-auto p-2">
+                        <h6 class="text-sm">{{item.port}}</h6>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex px-2">
+                      <div class="my-auto p-2">
+                        <h6 class="text-sm">{{item.userName}}</h6>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex px-2">
+                      <div class="my-auto p-2">
+                        <h6 class="text-sm">{{item.password}}</h6>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="dropleft  border-0 p-0" >
+
+                      <a class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-toggle="dropdown"
+                         aria-haspopup="true" aria-expanded="false">
+                        <h6 class="fa fa-ellipsis-v  text-sm" aria-hidden="true"></h6>
+                      </a>
+                      <div class="dropdown-menu  p-0 m-0 border-0 border-radius-md bg-white shadow" style="box-shadow: 0 8px 26px -4px rgba(20, 20, 20, 0.15)" aria-labelledby="dropdownMenuButton">
+
+                        <a class="dropdown-item  p-0 m-0" href="javascript:;">
+                          <div class="d-flex ">
+                            <div class="avatar avatar-sm  ">
+                              <i class="fa fa-edit text-secondary font-weight-normal  mb-0"></i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                              <p class="text-secondary   mb-0">
+                                {{ 'EDIT' | translate }}
+
+                              </p>
+                            </div>
+                          </div>
+                        </a>
+                        <a class="dropdown-item  p-0 m-0" href="javascript:;">
+                          <div class="d-flex ">
+                            <div class="avatar avatar-sm  ">
+                              <i
+                                [classList]="false ? 'fa fa-times text-secondary  mb-0' : 'fa fa-check text-secondary  mb-0'">
+                              </i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                      <span class="text-secondary   mb-0">
+                        {{ (false ? 'DISABLE' : 'ENABLE') | translate }} </span>
+                            </div>
+                          </div>
+                        </a>
+                        <a class="dropdown-item  p-0 m-0" href="javascript:;">
+                          <div class="d-flex ">
+                            <div class="avatar avatar-sm  ">
+                              <i class=""
+                                 [classList]="true ? 'fa fa-unlock text-secondary text-xs  mb-0 ' : 'fa fa-lock text-secondary   mb-0 text-xs '"></i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                      <span class="text-secondary   mb-0">
+                        {{ (true ? 'UNBLOCK' : 'BLOCK') | translate }} </span>
+                            </div>
+                          </div>
+                        </a>
+                        <div class="dropdown-divider mb-0 mt-0"></div>
+                        <a class="dropdown-item  p-0 m-0" >
+                          <div class="d-flex ">
+                            <div class="avatar avatar-sm text-danger ">
+                              <i class="fa fa-trash-can text-danger text-xl  mb-0"></i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                      <span class="text-danger  text-xl mb-0">
+                        {{ 'DELETE' | translate }}
+                      </span>
+                            </div>
+                          </div>
+                        </a>
+
+                      </div>
+                    </div>
+                  </td>
+
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
