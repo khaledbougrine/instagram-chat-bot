@@ -1,4 +1,3 @@
-const puppeteer = require('puppeteer');
 const { IgApiClient } = require('instagram-private-api');
 const { HttpsProxyAgent } = require('https-proxy-agent');
  // Replace with your Instagram password
