@@ -1,9 +1,13 @@
 const { Sequelize } = require('sequelize');
 const path = require('path');
-const os = require('os');
+// const os = require('os');
+const { app } = require('electron');
 
 // Define the SQLite database file path
-const dbPath =path.join(os.tmpdir(), 'app.db');
+// const dbPath =path.join(os.tmpdir(), 'app.db');
+const dbPath = path.join(app.getPath('userData'), 'app.db');
+console.log(dbPath)
+console.log('dbPath')
 
 // Initialize Sequelize with SQLite
 const sequelize = new Sequelize({
