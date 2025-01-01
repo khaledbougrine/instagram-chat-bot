@@ -3,17 +3,15 @@
   "directories": {
     "output": "release/"
   },
+  "extraResources": [
+    {
+      "from": "node_modules/",
+      "to": "node_modules/"
+    }
+  ],
   "files": [
     "**/*",
-    "node_modules/instagram-private-api/**/*",
-    "node_modules/papaparse/**/*",
-    "node_modules/rxjs/**/*",
-    "node_modules/sequelize/**/*",
-    "node_modules/sequelize-pool/**/*",
-    "node_modules/sqlite3/**/*",
-    "node_modules/sweetalert2/**/*",
-    "node_modules/tslib/**/*",
-    "node_modules/zone.js/**/*",
+    "node_modules/**/*",
     "!**/*.ts",
     "!*.map",
     "!package.json",
@@ -40,6 +38,7 @@
   },
   "linux": {
     "icon": "dist/assets/icons",
+    "category": "Utility",
     "target": [
       "AppImage"
     ]

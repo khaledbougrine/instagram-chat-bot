@@ -1,8 +1,10 @@
 const { Sequelize } = require('sequelize');
 const path = require('path');
+const os = require('os');
 
 // Define the SQLite database file path
-const dbPath = path.join(__dirname, '../app.db');
+const dbPath =path.join(os.tmpdir(), 'app.db');
+
 // Initialize Sequelize with SQLite
 const sequelize = new Sequelize({
   dialect: 'sqlite',
