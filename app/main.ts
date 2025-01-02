@@ -31,13 +31,13 @@ function createWindow(): BrowserWindow {
     },
   });
 
-  if (serve) {
-    const debug = require('electron-debug');
-    debug();
-
-    require('electron-reloader')(module);
-    win.loadURL('http://localhost:4200');
-  } else {
+  // if (serve) {
+  //   const debug = require('electron-debug');
+  //   debug();
+  //
+  //   require('electron-reloader')(module);
+  //   win.loadURL('http://localhost:4200');
+  // } else {
     // Path when running electron executable
     let pathIndex = './index.html';
 
@@ -45,12 +45,12 @@ function createWindow(): BrowserWindow {
        // Path when running electron in local folder
       pathIndex = '../dist/index.html';
     }
-
+    app.commandLine.appendSwitch('enable-gpu');
     const url = new URL(path.join('file:', __dirname, pathIndex));
     win.loadURL(url.href);
     // win.webContents.openDevTools();
 
-  }
+  // }
 
   // Emitted when the window is closed.
   win.on('closed', () => {

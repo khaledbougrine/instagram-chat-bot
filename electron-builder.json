@@ -1,5 +1,6 @@
 {
   "asar": true,
+  "compression": "maximum",
   "directories": {
     "output": "release/"
   },
@@ -11,7 +12,6 @@
   ],
   "files": [
     "**/*",
-    "node_modules/**/*",
     "!**/*.ts",
     "!*.map",
     "!package.json",
